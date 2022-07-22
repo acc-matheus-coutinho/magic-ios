@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "mtg-sdk-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MagicTheGathering/mtg-sdk-swift",
+      "state" : {
+        "revision" : "3ae8530ece3ea1261881dc74cb980753ae3392b5",
+        "version" : "1.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}
