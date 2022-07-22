@@ -16,6 +16,9 @@
 		E4CB3C91288B46B000DB4164 /* magic_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C90288B46B000DB4164 /* magic_iosUITests.swift */; };
 		E4CB3C93288B46B000DB4164 /* magic_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C92288B46B000DB4164 /* magic_iosUITestsLaunchTests.swift */; };
 		E4CB3CB1288B56DD00DB4164 /* MTGSDKSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E4CB3CB0288B56DD00DB4164 /* MTGSDKSwift */; };
+		E4CB3CB4288B5F7700DB4164 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E4CB3CB3288B5F7700DB4164 /* SnapKit */; };
+		E4CB3CB6288B5F7700DB4164 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E4CB3CB5288B5F7700DB4164 /* SnapKit-Dynamic */; };
+		E4CB3CB9288B5FCC00DB4164 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E4CB3CB8288B5FCC00DB4164 /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4CB3CB1288B56DD00DB4164 /* MTGSDKSwift in Frameworks */,
+				E4CB3CB9288B5FCC00DB4164 /* SnapshotTesting in Frameworks */,
+				E4CB3CB4288B5F7700DB4164 /* SnapKit in Frameworks */,
+				E4CB3CB6288B5F7700DB4164 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +278,9 @@
 			name = "magic-ios";
 			packageProductDependencies = (
 				E4CB3CB0288B56DD00DB4164 /* MTGSDKSwift */,
+				E4CB3CB3288B5F7700DB4164 /* SnapKit */,
+				E4CB3CB5288B5F7700DB4164 /* SnapKit-Dynamic */,
+				E4CB3CB8288B5FCC00DB4164 /* SnapshotTesting */,
 			);
 			productName = "magic-ios";
 			productReference = E4CB3C69288B46A800DB4164 /* magic-ios.app */;
@@ -347,6 +356,8 @@
 			mainGroup = E4CB3C60288B46A800DB4164;
 			packageReferences = (
 				E4CB3CAF288B56DD00DB4164 /* XCRemoteSwiftPackageReference "mtg-sdk-swift" */,
+				E4CB3CB2288B5F7700DB4164 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E4CB3CB7288B5FCC00DB4164 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = E4CB3C6A288B46A800DB4164 /* Products */;
 			projectDirPath = "";
@@ -732,6 +743,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E4CB3CB2288B5F7700DB4164 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E4CB3CB7288B5FCC00DB4164 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -739,6 +766,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E4CB3CAF288B56DD00DB4164 /* XCRemoteSwiftPackageReference "mtg-sdk-swift" */;
 			productName = MTGSDKSwift;
+		};
+		E4CB3CB3288B5F7700DB4164 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4CB3CB2288B5F7700DB4164 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E4CB3CB5288B5F7700DB4164 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4CB3CB2288B5F7700DB4164 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		E4CB3CB8288B5FCC00DB4164 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4CB3CB7288B5FCC00DB4164 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 
