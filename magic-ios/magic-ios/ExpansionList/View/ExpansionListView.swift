@@ -5,12 +5,16 @@
 //  Created by  on /07/22.
 //
 
-import Foundation
 import UIKit
 
 class CustomViewController: UIViewController {
+    
+    override func loadView() {
+        super.loadView()
+        self.view = CustomView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
     }
 }
