@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MTGSDKSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window.windowScene = windowScene
-        window.rootViewController = UIViewController()
+        let viewModel = FavoritesCardsViewModel(magic: Magic())
+        let favoritesView = FavoritesCardViewController(viewModel: viewModel)
+        window.rootViewController = UINavigationController(rootViewController: favoritesView)
         window.makeKeyAndVisible()
         
         self.window = window
