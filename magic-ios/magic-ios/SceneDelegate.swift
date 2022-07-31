@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MTGSDKSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,7 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window.windowScene = windowScene
-        window.rootViewController = UIViewController()
+        let magic = Magic()
+        let viewModel = ExpansionCardsViewModel(magic: magic)
+        let viewController = ExpansionCardsViewController(viewModel: viewModel)
+        
+        window.rootViewController = UINavigationController(rootViewController: viewController)
         window.makeKeyAndVisible()
         
         self.window = window
