@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		802B86F52896E9B8005BC424 /* ExpansionCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */; };
+		802B86F82896F1CA005BC424 /* BaseViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */; };
 		E470D310289167600057BD81 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E470D30F289167600057BD81 /* SnapKit */; };
 		E4CB3C6D288B46A800DB4164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */; };
 		E4CB3C6F288B46A800DB4164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsViewController.swift; sourceTree = "<group>"; };
+		802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewConfiguration.swift; sourceTree = "<group>"; };
 		E4CB3C69288B46A800DB4164 /* magic-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		802B86F62896F17E005BC424 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		E4CB3C60288B46A800DB4164 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +201,7 @@
 		E4CB3CA2288B54DC00DB4164 /* ExpansionCards */ = {
 			isa = PBXGroup;
 			children = (
+				802B86F62896F17E005BC424 /* Util */,
 				E4CB3CAB288B556A00DB4164 /* Model */,
 				E4CB3CAA288B556400DB4164 /* ViewModel */,
 				E4CB3CA9288B555F00DB4164 /* View */,
@@ -440,6 +451,7 @@
 				E4CB3CBD288D99A900DB4164 /* CardDetailsView.swift in Sources */,
 				E4CB3CC1288D9A9B00DB4164 /* ExpansionListModel.swift in Sources */,
 				802B86F52896E9B8005BC424 /* ExpansionCardsViewController.swift in Sources */,
+				802B86F82896F1CA005BC424 /* BaseViewConfiguration.swift in Sources */,
 				E4CB3CC3288D9ABE00DB4164 /* ExpansionListViewModel.swift in Sources */,
 				E4CB3CBF288D99C000DB4164 /* CardDetailsViewModel.swift in Sources */,
 				E4CB3CBB288D996E00DB4164 /* CardDetailsModel.swift in Sources */,

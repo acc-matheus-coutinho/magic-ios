@@ -12,19 +12,40 @@ import SnapKit
 class ExpansionCardsViewController: UIViewController {
     
     var viewModel: ExpansionCardsViewModel
+    
+    private let background: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "background")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .clear
     }
     
     public init(viewModel: ExpansionCardsViewModel) {
+        
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        setupViewConfiguration()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension ExpansionCardsViewController: BaseViewConfiguration {
+    func buildViewHierarchy() {
+        view.addSubview(background)
+    }
+    
+    func setupConstraints() {
+        background.snp.makeConstraints { make in
+            make.leading.top.trailing.bottom.equalToSuperview()
+        }
     }
     
     
