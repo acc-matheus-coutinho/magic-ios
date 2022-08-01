@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MTGSDKSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,11 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = CustomViewController()
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window.windowScene = windowScene
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
-        self.window = window
+        let windowScreenExpansion = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        windowScreenExpansion.windowScene = windowScene
+        windowScreenExpansion.rootViewController = viewController
+        windowScreenExpansion.makeKeyAndVisible()
+        self.window = windowScreenExpansion
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

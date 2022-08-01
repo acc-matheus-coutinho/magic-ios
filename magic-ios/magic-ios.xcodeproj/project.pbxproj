@@ -30,6 +30,9 @@
 		E4CB3CCD288D9BCB00DB4164 /* FavoritesCardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CCC288D9BCB00DB4164 /* FavoritesCardsModel.swift */; };
 		E4CB3CCF288D9BED00DB4164 /* FavoritesCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CCE288D9BED00DB4164 /* FavoritesCardsViewModel.swift */; };
 		E4CB3CD1288D9BF900DB4164 /* FavoritesCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CD0288D9BF900DB4164 /* FavoritesCardsView.swift */; };
+		E6A4814828942720004ED7AB /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A4814728942720004ED7AB /* CardCollectionViewCell.swift */; };
+		E6C5D7862894634500220AAE /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5D7852894634500220AAE /* UIImageView+Extensions.swift */; };
+		E6C5D788289490C900220AAE /* TitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5D787289490C900220AAE /* TitleCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		E4CB3CCC288D9BCB00DB4164 /* FavoritesCardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCardsModel.swift; sourceTree = "<group>"; };
 		E4CB3CCE288D9BED00DB4164 /* FavoritesCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCardsViewModel.swift; sourceTree = "<group>"; };
 		E4CB3CD0288D9BF900DB4164 /* FavoritesCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCardsView.swift; sourceTree = "<group>"; };
+		E6A4814728942720004ED7AB /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		E6C5D7852894634500220AAE /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		E6C5D787289490C900220AAE /* TitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 		E4CB3C6B288B46A800DB4164 /* magic-ios */ = {
 			isa = PBXGroup;
 			children = (
+				E6C5D7832894633300220AAE /* Common */,
 				E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */,
 				E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */,
 				E4CB3C9F288B546300DB4164 /* CardDetails */,
@@ -275,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				E4CB3CD0288D9BF900DB4164 /* FavoritesCardsView.swift */,
+				E6A4814728942720004ED7AB /* CardCollectionViewCell.swift */,
+				E6C5D787289490C900220AAE /* TitleCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +302,22 @@
 				E4CB3CCC288D9BCB00DB4164 /* FavoritesCardsModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E6C5D7832894633300220AAE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E6C5D7842894633600220AAE /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E6C5D7842894633600220AAE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E6C5D7852894634500220AAE /* UIImageView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,11 +462,14 @@
 				E4CB3CC7288D9B6E00DB4164 /* ExpansionCardsModel.swift in Sources */,
 				E4CB3CCF288D9BED00DB4164 /* FavoritesCardsViewModel.swift in Sources */,
 				E4CB3C6D288B46A800DB4164 /* AppDelegate.swift in Sources */,
+				E6C5D7862894634500220AAE /* UIImageView+Extensions.swift in Sources */,
 				E4CB3CBD288D99A900DB4164 /* CardDetailsView.swift in Sources */,
 				E4CB3CC1288D9A9B00DB4164 /* ExpansionListModel.swift in Sources */,
 				E4CB3CC3288D9ABE00DB4164 /* ExpansionListViewModel.swift in Sources */,
 				B14D6B222892D9050031A52C /* Utils.swift in Sources */,
+				E6C5D788289490C900220AAE /* TitleCollectionReusableView.swift in Sources */,
 				E4CB3CBF288D99C000DB4164 /* CardDetailsViewModel.swift in Sources */,
+				E6A4814828942720004ED7AB /* CardCollectionViewCell.swift in Sources */,
 				E4CB3CBB288D996E00DB4164 /* CardDetailsModel.swift in Sources */,
 				E4CB3CD1288D9BF900DB4164 /* FavoritesCardsView.swift in Sources */,
 				E4CB3CCB288D9B8D00DB4164 /* ExpansionCardsView.swift in Sources */,
