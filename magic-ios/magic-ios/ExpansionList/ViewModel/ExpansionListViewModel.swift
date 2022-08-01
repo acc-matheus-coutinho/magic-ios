@@ -50,6 +50,7 @@ extension ComponentView: ViewCode {
         addSubview(labelView)
         addSubview(imageView)
         imageView.addSubview(view)
+//        addSubview(view)
     }
 
     func setupConstraint() {
@@ -66,9 +67,13 @@ extension ComponentView: ViewCode {
         }
         
         view.snp.makeConstraints { make in
-            make.height.width.equalTo(30.0)
-            make.top.left.equalTo(imageView).offset(10)
-            make.right.bottom.equalTo(imageView).offset(-10)
+//            make.height.width.equalTo(30.0)
+//            make.top.left.equalTo(imageView).offset(10)
+//            make.right.bottom.equalTo(imageView).offset(-10)
+            make.leading.equalToSuperview()
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     

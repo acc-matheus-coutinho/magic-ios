@@ -37,6 +37,6 @@ extension CustomView: ViewCode {
     }
     
     func setupConfiguration() {
-        self.backgroundColor = .gray
+        self.backgroundColor = .yellow
     }
 }
