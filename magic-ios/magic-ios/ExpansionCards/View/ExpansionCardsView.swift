@@ -10,6 +10,8 @@ import MTGSDKSwift
 
 class ExpansionCardViewCell: UICollectionViewCell {
     
+    static let identifier = "ExpansionCardViewCell"
+    
     private let cardImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "menucard.fill")
@@ -33,6 +35,26 @@ class ExpansionCardViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with card: Card) {
+        cardImage.isHidden = true
+        loadingView.startAnimating()
+
+        if let urlString = card.imageUrl?.replacingOccurrences(of: "http://", with: "https://") {
+    
+            cardImage.loadFrom(URLAddress: urlString) {
+                    self.loadingView.stopAnimating()
+                    self.cardImage.isHidden = false
+                    self.loadingView.removeFromSuperview()
+                    print("####terminou clousure")
+            
+            }
+        } else {
+            self.loadingView.stopAnimating()
+            self.cardImage.isHidden = false
+            self.loadingView.removeFromSuperview()
+        }
     }
 }
 

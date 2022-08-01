@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		802B86F52896E9B8005BC424 /* ExpansionCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */; };
 		802B86F82896F1CA005BC424 /* BaseViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */; };
+		802B86FF28971FC5005BC424 /* DescriptionSectionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */; };
+		8062C53128988B7F0098D345 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062C53028988B7F0098D345 /* UIImageView+Extensions.swift */; };
 		E470D310289167600057BD81 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E470D30F289167600057BD81 /* SnapKit */; };
 		E4CB3C6D288B46A800DB4164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */; };
 		E4CB3C6F288B46A800DB4164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */; };
@@ -53,6 +55,8 @@
 /* Begin PBXFileReference section */
 		802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsViewController.swift; sourceTree = "<group>"; };
 		802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewConfiguration.swift; sourceTree = "<group>"; };
+		802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionSectionCardsView.swift; sourceTree = "<group>"; };
+		8062C53028988B7F0098D345 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		E4CB3C69288B46A800DB4164 /* magic-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,9 +113,18 @@
 		802B86F62896F17E005BC424 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				802B86FB28970CCC005BC424 /* Extension */,
 				802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		802B86FB28970CCC005BC424 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8062C53028988B7F0098D345 /* UIImageView+Extensions.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E4CB3C60288B46A800DB4164 = {
@@ -262,6 +275,7 @@
 			children = (
 				802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */,
 				E4CB3CCA288D9B8D00DB4164 /* ExpansionCardsView.swift */,
+				802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,6 +463,7 @@
 				E4CB3CCF288D9BED00DB4164 /* FavoritesCardsViewModel.swift in Sources */,
 				E4CB3C6D288B46A800DB4164 /* AppDelegate.swift in Sources */,
 				E4CB3CBD288D99A900DB4164 /* CardDetailsView.swift in Sources */,
+				8062C53128988B7F0098D345 /* UIImageView+Extensions.swift in Sources */,
 				E4CB3CC1288D9A9B00DB4164 /* ExpansionListModel.swift in Sources */,
 				802B86F52896E9B8005BC424 /* ExpansionCardsViewController.swift in Sources */,
 				802B86F82896F1CA005BC424 /* BaseViewConfiguration.swift in Sources */,
@@ -456,6 +471,7 @@
 				E4CB3CBF288D99C000DB4164 /* CardDetailsViewModel.swift in Sources */,
 				E4CB3CBB288D996E00DB4164 /* CardDetailsModel.swift in Sources */,
 				E4CB3CD1288D9BF900DB4164 /* FavoritesCardsView.swift in Sources */,
+				802B86FF28971FC5005BC424 /* DescriptionSectionCardsView.swift in Sources */,
 				E4CB3CCB288D9B8D00DB4164 /* ExpansionCardsView.swift in Sources */,
 				E4CB3CCD288D9BCB00DB4164 /* FavoritesCardsModel.swift in Sources */,
 				E4CB3CC5288D9AEC00DB4164 /* ExpansionListView.swift in Sources */,
