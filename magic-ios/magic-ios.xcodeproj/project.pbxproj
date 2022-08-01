@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B11B3D9F2894222E0054FEFD /* RequenstAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B3D9E2894222E0054FEFD /* RequenstAPI.swift */; };
 		B14D6B222892D9050031A52C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14D6B212892D9050031A52C /* Utils.swift */; };
 		E470D310289167600057BD81 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E470D30F289167600057BD81 /* SnapKit */; };
 		E4CB3C6D288B46A800DB4164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */; };
@@ -51,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B11B3D9E2894222E0054FEFD /* RequenstAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequenstAPI.swift; sourceTree = "<group>"; };
 		B14D6B212892D9050031A52C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E4CB3C69288B46A800DB4164 /* magic-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,14 +104,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B11B3D9D289422110054FEFD /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				B11B3D9E2894222E0054FEFD /* RequenstAPI.swift */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
 		E4CB3C60288B46A800DB4164 = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +171,6 @@
 		E4CB3CA0288B548300DB4164 /* ExpansionList */ = {
 			isa = PBXGroup;
 			children = (
-				B11B3D9D289422110054FEFD /* Request */,
 				E4CB3CA6288B553D00DB4164 /* Model */,
 				E4CB3CA8288B555400DB4164 /* ViewModel */,
 				E4CB3CA7288B554600DB4164 /* View */,
@@ -454,7 +443,6 @@
 				B14D6B222892D9050031A52C /* Utils.swift in Sources */,
 				E4CB3CBF288D99C000DB4164 /* CardDetailsViewModel.swift in Sources */,
 				E4CB3CBB288D996E00DB4164 /* CardDetailsModel.swift in Sources */,
-				B11B3D9F2894222E0054FEFD /* RequenstAPI.swift in Sources */,
 				E4CB3CD1288D9BF900DB4164 /* FavoritesCardsView.swift in Sources */,
 				E4CB3CCB288D9B8D00DB4164 /* ExpansionCardsView.swift in Sources */,
 				E4CB3CCD288D9BCB00DB4164 /* FavoritesCardsModel.swift in Sources */,
