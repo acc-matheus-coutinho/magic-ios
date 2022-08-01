@@ -37,8 +37,6 @@ class FavoritesCardViewController: UIViewController {
         return searchController
     }()
     
-
-    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -49,6 +47,8 @@ class FavoritesCardViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK: - Initializers
+    
     public init(viewModel: FavoritesCardsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -58,7 +58,7 @@ class FavoritesCardViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cyclep
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,9 +74,10 @@ class FavoritesCardViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .darkGray
         self.navigationItem.searchController = searchController
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
         
         view.addSubview(backgroundImage)
-        
         view.addSubview(collectionView)
     }
     
@@ -101,13 +102,21 @@ class FavoritesCardViewController: UIViewController {
         self.collectionView.dataSource = self
     }
     
-    func bindViewModel() {
+    private func bindViewModel() {
         self.viewModel.delegate = self
         viewModel.getFavoriteCards()
     }
 }
 
+// MARK: - FavoriteCardsManager
+
 extension FavoritesCardViewController: FavoriteCardsManager {
+    func filterCardsSuccess() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
     func getCardsSuccess() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -118,11 +127,14 @@ extension FavoritesCardViewController: FavoriteCardsManager {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension FavoritesCardViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = viewModel.favoriteCardsBySection[indexPath.section][indexPath.item]
-        print(item.name)
+//        let item = viewModel.favoriteCardsBySection[indexPath.section][indexPath.item]
+        
+        // Aqui irá abrir a tela de detalhes de uma carta
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -141,7 +153,7 @@ extension FavoritesCardViewController: UICollectionViewDelegate {
 extension FavoritesCardViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.cardTypes.count
+        return viewModel.favoriteCardsBySection.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -158,11 +170,33 @@ extension FavoritesCardViewController: UICollectionViewDataSource {
     
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension FavoritesCardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.size.width
         
         return CGSize(width: 0.25 * width, height: 0.35 * width)
+    }
+}
+
+// MARK: - UISearchControllerDelegate and UISearchBarDelegate
+extension FavoritesCardViewController: UISearchControllerDelegate, UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            viewModel.filterCardsWith(word: nil)
+        } else {
+            viewModel.filterCardsWith(word: searchText)
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else {
+            viewModel.filterCardsWith(word: nil)
+            return
+        }
+        viewModel.filterCardsWith(word: text)
     }
 }
 

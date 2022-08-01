@@ -7,6 +7,7 @@
 
 import UIKit
 import MTGSDKSwift
+import Kingfisher
 
 class CardCollectionViewCell: UICollectionViewCell {
     
@@ -56,10 +57,12 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     public func configure(with card: Card) {
         cardImage.isHidden = true
+        contentView.addSubview(loadingView)
         loadingView.startAnimating()
-        
+
         if let urlString = card.imageUrl?.replacingOccurrences(of: "http://", with: "https://") {
-            cardImage.loadFrom(URLAddress: urlString) {
+            let placeHolder = UIImage(systemName: "menucard.fill")
+            cardImage.kf.setImage(with: URL(string: urlString), placeholder: placeHolder, options: .none) { _ in
                 self.loadingView.stopAnimating()
                 self.cardImage.isHidden = false
                 self.loadingView.removeFromSuperview()
