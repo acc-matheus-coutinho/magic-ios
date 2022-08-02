@@ -25,6 +25,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
+        let viewModel = FavoritesCardsViewModel(magic: Magic())
+        let favoritesView = FavoritesCardViewController(viewModel: viewModel)
+        window.rootViewController = UINavigationController(rootViewController: favoritesView)
         window.makeKeyAndVisible()
         
         self.window = window
