@@ -22,10 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let windowScreenExpansion = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        windowScreenExpansion.windowScene = windowScene
-        windowScreenExpansion.rootViewController = UINavigationController(rootViewController: favoritesView)
-        windowScreenExpansion.makeKeyAndVisible()
+        let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window.windowScene = windowScene
+        
+        window.rootViewController = TabBarController()
+        window.makeKeyAndVisible()
         
         self.window = windowScreenExpansion
     }

@@ -6,4 +6,9 @@
 //
 
 import Foundation
+import MTGSDKSwift
 
+struct Cards {
+    let type: String
+    let cards: [Card]
+}

@@ -1,24 +1,24 @@
 //
-//  CardCollectionViewCell.swift
+//  ExpansionCardsView.swift
 //  magic-ios
 //
-//  Created by matheus.coutinho on 29/07/22.
+//  Created by  on /07/22.
 //
 
 import UIKit
 import MTGSDKSwift
 import Kingfisher
 
-class CardCollectionViewCell: UICollectionViewCell {
+class ExpansionCardViewCell: UICollectionViewCell {
     
-    static let identifier = "CardCollectionViewCell"
+    static let identifier = "ExpansionCardViewCell"
     
     private let cardImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "menucard.fill")
         image.tintColor = .white
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -31,28 +31,11 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupView()
-        setupConstraints()
+        setupViewConfiguration()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupView() {
-        contentView.addSubview(loadingView)
-        contentView.addSubview(cardImage)
-    }
-    
-    private func setupConstraints() {
-        cardImage.snp.makeConstraints { make in
-            make.leading.top.trailing.bottom.equalToSuperview()
-        }
-        
-        loadingView.snp.makeConstraints { make in
-            make.leading.top.trailing.bottom.equalToSuperview()
-        }
     }
     
     public func configure(with card: Card) {
@@ -71,6 +54,23 @@ class CardCollectionViewCell: UICollectionViewCell {
             self.loadingView.stopAnimating()
             self.cardImage.isHidden = false
             self.loadingView.removeFromSuperview()
+        }
+    }
+}
+
+extension ExpansionCardViewCell: BaseViewConfiguration {
+    func buildViewHierarchy() {
+        contentView.addSubview(loadingView)
+        contentView.addSubview(cardImage)
+    }
+    
+    func setupConstraints() {
+        cardImage.snp.makeConstraints { make in
+            make.leading.top.trailing.bottom.equalToSuperview()
+        }
+        
+        loadingView.snp.makeConstraints { make in
+            make.leading.top.trailing.bottom.equalToSuperview()
         }
     }
 }
