@@ -25,7 +25,9 @@ final class ExpansionCardsViewModel {
     
     // MARK: - Parametros
     
-    let cmc = CardSearchParameter(parameterType: .set, value: "KTK")
+    var parameter: CardSearchParameter?
+    
+    let cmc = CardSearchParameter(parameterType: .name, value: "Bogardan Firefiend")
     let color = CardSearchParameter(parameterType: .colors, value: "red")
     let setCode = CardSearchParameter(parameterType: .set, value: "KTK")
     
@@ -35,17 +37,21 @@ final class ExpansionCardsViewModel {
     
     // MARK: - Init
     
-    init() {
-        
+    init(parameter: CardSearchParameter) {
+        self.parameter = parameter
     }
     
     // MARK: - Methods
     
     func getCards() {
-        magic.fetchCards([color], configuration: .init(pageSize: 100, pageTotal: 10)) { result in
+        guard let parameter = parameter else {
+            return
+        }
+        magic.fetchCards([parameter]) { result in
             switch result {
             case .success(let cards):
                 self.expansionCards = cards
+                print(cards)
                 self.sectionExpansionCards = self.filterCardsByType(cards: cards)
                 self.delegate?.getCards()
             case .error(_):
@@ -82,6 +88,7 @@ final class ExpansionCardsViewModel {
         let sections: [[Card]] = uniqueTypes.map { type in
             return cards.filter { $0.type == type }
         }
+        print(sections)
         return sections
     }
 }
