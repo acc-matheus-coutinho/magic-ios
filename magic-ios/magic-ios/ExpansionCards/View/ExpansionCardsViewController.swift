@@ -42,6 +42,7 @@ class ExpansionCardsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleNavBar()
         setupViewConfiguration()
         setupCollectionView()
         viewModel.delegate = self
@@ -57,6 +58,12 @@ class ExpansionCardsViewController: UIViewController {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+    }
+    
+    private func titleNavBar() {
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        self.title = "Cards"
     }
 }
 
@@ -91,9 +98,9 @@ extension ExpansionCardsViewController: BaseViewConfiguration {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview()
         }
     }

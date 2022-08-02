@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window.windowScene = windowScene
-        let viewModel = ExpansionCardsViewModel(parameter: CardSearchParameter(parameterType: .set, value: "KTK"))
+        let viewModel = ExpansionCardsViewModel(parameter: CardSearchParameter(parameterType: .colors, value: "black"))
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
         window.rootViewController = UINavigationController(rootViewController: viewController)
