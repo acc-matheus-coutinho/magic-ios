@@ -25,7 +25,7 @@ final class ExpansionCardsViewModel {
     
     // MARK: - Parametros
     
-    var parameter: CardSearchParameter?
+    var parameters: [CardSearchParameter] = []
     
     let cmc = CardSearchParameter(parameterType: .name, value: "Bogardan Firefiend")
     let color = CardSearchParameter(parameterType: .colors, value: "red")
@@ -37,17 +37,17 @@ final class ExpansionCardsViewModel {
     
     // MARK: - Init
     
-    init(parameter: CardSearchParameter) {
-        self.parameter = parameter
+    init(parameters: [CardSearchParameter], setName: String) {
+        let setCode = CardSearchParameter(parameterType: .set, value: setName)
+        self.parameters.append(setCode)
+        self.parameters.append(contentsOf: parameters)
     }
     
     // MARK: - Methods
     
     func getCards() {
-        guard let parameter = parameter else {
-            return
-        }
-        magic.fetchCards([parameter]) { [weak self] result in
+
+        magic.fetchCards(parameters) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let cards):
@@ -91,5 +91,18 @@ final class ExpansionCardsViewModel {
         }
         print(sections)
         return sections
+    }
+    
+    public func filterCardsWith(word: String?) {
+        if let word = word {
+            let filteredCards = expansionCards.filter { card in
+                return card.name?.contains(word) ?? false
+            }
+            sectionExpansionCards = filterCardsByType(cards: filteredCards)
+        } else {
+            sectionExpansionCards = filterCardsByType(cards: self.expansionCards)
+        }
+
+        delegate?.getCards()
     }
 }

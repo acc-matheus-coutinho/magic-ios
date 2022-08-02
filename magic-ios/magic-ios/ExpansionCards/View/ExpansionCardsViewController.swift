@@ -29,6 +29,19 @@ class ExpansionCardsViewController: UIViewController {
         return collectionView
     }()
     
+    private let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.barStyle = UIBarStyle.black
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string:"Search cards", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white] )
+        searchController.searchBar.searchTextField.tintColor = .white
+        searchController.searchBar.searchTextField.borderStyle = .line
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.searchTextField.tokenBackgroundColor = .white
+        searchController.searchBar.searchTextField.backgroundColor = .clear
+        return searchController
+    }()
+    
     
     //MARK: - Life Cicle
     public init(viewModel: ExpansionCardsViewModel) {
@@ -47,6 +60,10 @@ class ExpansionCardsViewController: UIViewController {
         setupCollectionView()
         viewModel.delegate = self
         viewModel.getCards()
+        
+        self.navigationItem.searchController = searchController
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
     }
     
     private func setupCollectionView() {
@@ -137,6 +154,7 @@ extension ExpansionCardsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let item = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
+        print(item.name, item.setName)
         
     }
     
@@ -164,5 +182,29 @@ extension ExpansionCardsViewController: UICollectionViewDelegateFlowLayout {
         let width = view.frame.size.width
         
         return CGSize(width: 0.25 * width, height: 0.35 * width)
+    }
+}
+
+extension ExpansionCardsViewController: UISearchControllerDelegate, UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            viewModel.filterCardsWith(word: nil)
+        } else {
+            viewModel.filterCardsWith(word: searchText)
+        }
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else {
+            viewModel.filterCardsWith(word: nil)
+            return
+        }
+        
+        if searchText == "" {
+            viewModel.filterCardsWith(word: nil)
+        } else {
+            viewModel.filterCardsWith(word: searchText)
+        }
     }
 }

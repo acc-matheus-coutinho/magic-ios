@@ -11,7 +11,7 @@ import MTGSDKSwift
 class TabBarController: UITabBarController {
     
     private let expansionsList: UINavigationController = {
-        let viewModel = ExpansionCardsViewModel(parameter: CardSearchParameter(parameterType: .colors, value: "green"))
+        let viewModel = ExpansionCardsViewModel(parameters: [], setName: "KTK")
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
         let appearance = UITabBarItemAppearance()

@@ -192,11 +192,15 @@ extension FavoritesCardViewController: UISearchControllerDelegate, UISearchBarDe
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else {
+        guard let searchText = searchBar.text else {
             viewModel.filterCardsWith(word: nil)
             return
         }
-        viewModel.filterCardsWith(word: text)
+        if searchText == "" {
+            viewModel.filterCardsWith(word: nil)
+        } else {
+            viewModel.filterCardsWith(word: searchText)
+        }
     }
 }
 
