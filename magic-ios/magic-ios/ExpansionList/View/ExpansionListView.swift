@@ -123,8 +123,10 @@ extension ExpansionListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExpansionListTableViewCell.identifier, for: indexPath) as? ExpansionListTableViewCell else
         { return UITableViewCell() }
         
-        let item = viewModel.expansionListBySection[indexPath.section][indexPath.item]
-        cell.configure(text: item.setName ?? "erro")
+        let section = viewModel.expansionListBySection[indexPath.section]
+        
+        let index = section.index(section.startIndex, offsetBy: indexPath.row)
+        cell.configure(text: section[index])
         return cell
     }
     

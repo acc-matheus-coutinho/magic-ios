@@ -18,7 +18,7 @@ public protocol ExpansionListManager: AnyObject {
 class ExpansionListViewModel {
     
     var expansionListCards: [Card] = []
-    var expansionListBySection: [[Card]] = []
+    var expansionListBySection: [Set<String>]  = []
     
     var cardNames: [String] = []
     
@@ -31,11 +31,20 @@ class ExpansionListViewModel {
     }
     
     public func getExpansionList() {
-        magic.fetchCards([]) { result in
+        magic.fetchSets([]) { result in
+            switch result {
+                case .success(let sets):
+                    print(sets)
+                case .error(let error):
+                    print(error)
+            }
+        }
+        
+        magic.fetchCards([], configuration: .init(pageSize: 300, pageTotal: 5)) { result in
             switch result {
                 case .success(let cards):
                     self.expansionListCards = cards
-                    self.expansionListBySection = self.filterCardsByName(cards: cards)
+                    self.expansionListBySection = self.filterSectionsByWord(cards: cards)
                     self.delegate?.getCardsSuccess()
                     
                 case .error(let error):
@@ -45,19 +54,18 @@ class ExpansionListViewModel {
         }
     }
     
-    private func filterCardsByName(cards: [Card]) -> [[Card]]  {
-        // Todas as primeiras letras que recebemos
-        let firstLetters = cards.map { $0.setName?.first?.uppercased() ?? "" }
-        // Retirando duplicatas
-        let uniqueLetters = Set(firstLetters).sorted()
-        
-        self.cardNames = uniqueLetters
-        // Separando por seções
-        let sections: [[Card]] = uniqueLetters.map { letter in
-            return cards
-                .filter { $0.setName?.first?.uppercased() == letter }
-        }
-        
-        return sections
+    private func filterSectionsByWord(cards: [Card]) -> [Set<String>]  {
+            let types = cards.map { card in
+                return card.setName ?? "No Type"
+            }
+            let uniqueTypes = Set(types).sorted()
+            self.cardNames = uniqueTypes
+            let sections: [Set<String>] = uniqueTypes.map { type in
+                let expansions = cards.filter { $0.setName == type }.map { card in
+                    return card.setName ?? ""
+                }
+                return Set(expansions)
+            }
+            return sections
     }
 }
