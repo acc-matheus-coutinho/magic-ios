@@ -13,8 +13,12 @@ class TabBarController: UITabBarController {
     private let expansionsList: ExpansionCardsViewController = {
         let viewModel = ExpansionCardsViewModel(parameter: CardSearchParameter(parameterType: .colors, value: "green"))
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
+        
+        let appearance = UITabBarItemAppearance()
+        
         let tabBarItem = UITabBarItem(title: "Expansões", image: nil, selectedImage: nil)
         tabBarItem.badgeColor = .white
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)], for: .normal)
         viewController.tabBarItem = tabBarItem
         return viewController
     }()
@@ -22,14 +26,13 @@ class TabBarController: UITabBarController {
     private let favoritesList: FavoritesCardViewController = {
         let viewModel = FavoritesCardsViewModel(magic: Magic())
         let view = FavoritesCardViewController(viewModel: viewModel)
-        view.tabBarItem = UITabBarItem(title: "Favoritos", image: nil, selectedImage: nil)
+        
+        let tabBarItem = UITabBarItem(title: "Favoritos", image: nil, selectedImage: nil)
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)], for: .normal)
+        view.tabBarItem = tabBarItem
         return view
     }()
     
-//    private let appearance: UITabBarAppearance = {
-//        let appearance = UITabBarAppearance()
-//    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
