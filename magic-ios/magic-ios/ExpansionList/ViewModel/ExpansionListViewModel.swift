@@ -4,80 +4,60 @@
 //
 //  Created by  on /07/22.
 //
+//
+
 
 import UIKit
-import SnapKit
+import MTGSDKSwift
 
-class ComponentView: UIView {
-
-    lazy var imageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .orange
-        view.layer.cornerRadius = 10
-        return view
-
-    }()
-    
-    lazy var labelView: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        view.text = "Hello Word!"
-        return view
-    }()
-    
-    lazy var view: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+public protocol ExpansionListManager: AnyObject {
+    func getCardsSuccess()
+    func getCardsError()
 }
 
-extension ComponentView: ViewCode {
-    func buildHierarchy() {
-        addSubview(labelView)
-        addSubview(imageView)
-        imageView.addSubview(view)
-//        addSubview(view)
+class ExpansionListViewModel {
+    
+    var expansionListCards: [Card] = []
+    var expansionListBySection: [[Card]] = []
+    
+    var cardNames: [String] = []
+    
+    let magic: Magic!
+    
+    weak var delegate: ExpansionListManager?
+    
+    init(magic: Magic) {
+        self.magic = magic
     }
-
-    func setupConstraint() {
-        labelView.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(10)
-            make.right.equalTo(imageView.snp.right)
-            make.left.equalTo(imageView.snp.left)
-            make.bottom.equalToSuperview()
-        }
-        
-        imageView.snp.makeConstraints { make in
-            make.height.width.equalTo(100.0)
-            make.top.left.right.equalToSuperview()
-        }
-        
-        view.snp.makeConstraints { make in
-//            make.height.width.equalTo(30.0)
-//            make.top.left.equalTo(imageView).offset(10)
-//            make.right.bottom.equalTo(imageView).offset(-10)
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+    
+    public func getExpansionList() {
+        magic.fetchCards([]) { result in
+            switch result {
+                case .success(let cards):
+                    self.expansionListCards = cards
+                    self.expansionListBySection = self.filterCardsByName(cards: cards)
+                    self.delegate?.getCardsSuccess()
+                    
+                case .error(let error):
+                    print(error.localizedDescription)
+                    self.delegate?.getCardsError()
+            }
         }
     }
     
-    func setupConfiguration() {
-        //
+    private func filterCardsByName(cards: [Card]) -> [[Card]]  {
+        // Todas as primeiras letras que recebemos
+        let firstLetters = cards.map { $0.setName?.first?.uppercased() ?? "" }
+        // Retirando duplicatas
+        let uniqueLetters = Set(firstLetters).sorted()
+        
+        self.cardNames = uniqueLetters
+        // Separando por seções
+        let sections: [[Card]] = uniqueLetters.map { letter in
+            return cards
+                .filter { $0.setName?.first?.uppercased() == letter }
+        }
+        
+        return sections
     }
 }
