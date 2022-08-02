@@ -14,7 +14,6 @@ class ExpansionCardsViewController: UIViewController {
     var viewModel: ExpansionCardsViewModel
     
     //MARK: - UX
-    
     private let background: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "background")
@@ -24,8 +23,6 @@ class ExpansionCardsViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        //layout.scrollDirection = .vertical
-
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +31,6 @@ class ExpansionCardsViewController: UIViewController {
     
     
     //MARK: - Life Cicle
-    
     public init(viewModel: ExpansionCardsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -43,30 +39,47 @@ class ExpansionCardsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViewConfiguration()
         setupCollectionView()
-        bindViewModel()
+        viewModel.delegate = self
+        viewModel.getCards()
     }
     
     private func setupCollectionView() {
-        collectionView.register(ExpansionCardViewCell.self, forCellWithReuseIdentifier: ExpansionCardViewCell.identifier)
-        collectionView.register(DescriptionSectionCardsView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DescriptionSectionCardsView.identifier)
+        collectionView.register(ExpansionCardViewCell.self,
+                                forCellWithReuseIdentifier: ExpansionCardViewCell.identifier)
+        collectionView.register(DescriptionSectionCardsView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: DescriptionSectionCardsView.identifier)
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
+}
+
+    //MARK: - Delegate
+extension ExpansionCardsViewController: CardsRequests {
     
-    func bindViewModel() {
-        self.viewModel.delegate = self
-        viewModel.getCards()
+    func getCards() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func getCardsError() {
+        DispatchQueue.main.async {
+            let alerta = AlertRequestFail(title: "Erro", message: "Tente outra vez").alert()
+            self.present(alerta, animated: true)
+        }
     }
 }
 
+    //MARK: - Constraints
 extension ExpansionCardsViewController: BaseViewConfiguration {
+    
     func buildViewHierarchy() {
         view.addSubview(background)
         view.addSubview(collectionView)
@@ -78,73 +91,69 @@ extension ExpansionCardsViewController: BaseViewConfiguration {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()
         }
     }
-    
-    func configureView() {
-       //view.backgroundColor = .clear
-    }
 }
 
-extension ExpansionCardsViewController: CardsRequests {
-    
-    func getCards() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
-    
-    func getCardsError() {
-    }
-}
-
+    //MARK: - DataSource
 extension ExpansionCardsViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  viewModel.types.count
+        return  viewModel.typesCount()
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        return viewModel.sectionExpansionCards[section].count
+        return viewModel.cardsCount(index: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExpansionCardViewCell.identifier,
+                                                            for: indexPath) as? ExpansionCardViewCell else
+                                                            { return UICollectionViewCell() }
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExpansionCardViewCell.identifier, for: indexPath) as? ExpansionCardViewCell else
-        { return UICollectionViewCell() }
+        let configure = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
         
-        cell.configure(with: viewModel.sectionExpansionCards[indexPath.section][indexPath.item])
+        cell.configure(with: configure)
+        
         return cell
     }
 }
 
+    //MARK: - Collection Delegate
 extension ExpansionCardsViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let item = viewModel.sectionExpansionCards[indexPath.section][indexPath.item]
-            print(item.name)
-        }
         
-        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-            if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DescriptionSectionCardsView.identifier, for: indexPath) as? DescriptionSectionCardsView{
-                sectionHeader.configure(text: viewModel.types[indexPath.section])
-                return sectionHeader
-            }
-            return UICollectionReusableView()
+        let item = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let description = DescriptionSectionCardsView.identifier
+        
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: description, for: indexPath) as? DescriptionSectionCardsView {
+            sectionHeader.configure(text: viewModel.typesString(index: indexPath.section))
+            
+            return sectionHeader
         }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-            return CGSize(width: view.frame.width, height: 50)
-        }
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: view.frame.width, height: 50)
+    }
 }
 
 extension ExpansionCardsViewController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let width = view.frame.size.width
-            
-            return CGSize(width: 0.25 * width, height: 0.35 * width)
-        }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.size.width
+        
+        return CGSize(width: 0.25 * width, height: 0.35 * width)
     }
+}

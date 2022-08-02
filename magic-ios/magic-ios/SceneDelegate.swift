@@ -21,8 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window.windowScene = windowScene
-        let magic = Magic()
-        let viewModel = ExpansionCardsViewModel(magic: magic)
+        let viewModel = ExpansionCardsViewModel()
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
         window.rootViewController = UINavigationController(rootViewController: viewController)

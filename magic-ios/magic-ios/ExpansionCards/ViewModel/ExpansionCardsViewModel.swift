@@ -9,59 +9,76 @@ import UIKit
 import MTGSDKSwift
 
 public protocol CardsRequests: AnyObject {
-        func getCards()
-        func getCardsError()
-    }
-    
-class ExpansionCardsViewModel {
+    func getCards()
+    func getCardsError()
+}
+
+final class ExpansionCardsViewModel {
     
     // MARK: - Variables
+    
     var expansionCards: [Card] = []
+    private var sectionExpansionCards: [[Card]] = []
+    private var types: [String] = []
     
-    var sectionExpansionCards: [[Card]] = []
-    
-    var types: [String] = []
-    let magic: Magic
+    let magic = Magic()
     
     // MARK: - Parametros
-    let cmc = CardSearchParameter(parameterType: .set, value: "KTK")
-    let color = CardSearchParameter(parameterType: .colors, value: "black")
-    let setCode = CardSearchParameter(parameterType: .set, value: "AER")
     
-    // MARK: - Delegates
+    let cmc = CardSearchParameter(parameterType: .set, value: "KTK")
+    let color = CardSearchParameter(parameterType: .colors, value: "red")
+    let setCode = CardSearchParameter(parameterType: .set, value: "KTK")
+    
+    // MARK: - Delegate
+    
     weak var delegate: CardsRequests?
     
     // MARK: - Init
-    init(magic: Magic) {
-        self.magic = magic
+    
+    init() {
+        
     }
     
-    public func getCards() {
-        magic.fetchCards([cmc]) { result in
+    // MARK: - Methods
+    
+    func getCards() {
+        magic.fetchCards([color], configuration: .init(pageSize: 100, pageTotal: 10)) { result in
             switch result {
             case .success(let cards):
                 self.expansionCards = cards
                 self.sectionExpansionCards = self.filterCardsByType(cards: cards)
                 self.delegate?.getCards()
-            case .error(let error):
+            case .error(_):
                 self.delegate?.getCardsError()
             }
         }
     }
     
+    public func cardsCount(index: Int) -> Int {
+        sectionExpansionCards[index].count
+    }
+    
+    public func typesCount() -> Int {
+        types.count
+    }
+    
+    public func sectionExpansionCard(indexSection: Int, indexItem : Int) -> Card {
+        sectionExpansionCards[indexSection][indexItem]
+    }
+    
+    public func typesString(index: Int) -> String {
+        types[index]
+    }
+    
     private func filterCardsByType(cards: [Card]) -> [[Card]]  {
         
-        //Retorna os tipos dos cards do Array
         let types = cards.map { card in
             return card.type ?? "No Type"
         }
-        //Colocar os Cards em Ordem Alfabetica
-        let uniqueTypes = Set(types).sorted()
         
-        //seta os valores na minha variavel Types
+        let uniqueTypes = Set(types).sorted()
         self.types = uniqueTypes
         
-        //Filtrando pelo tipo do Card
         let sections: [[Card]] = uniqueTypes.map { type in
             return cards.filter { $0.type == type }
         }

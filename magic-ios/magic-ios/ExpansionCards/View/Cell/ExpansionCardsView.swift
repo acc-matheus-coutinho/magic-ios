@@ -7,6 +7,7 @@
 
 import UIKit
 import MTGSDKSwift
+import Kingfisher
 
 class ExpansionCardViewCell: UICollectionViewCell {
     
@@ -37,18 +38,17 @@ class ExpansionCardViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with card: Card) {
+    public func configure(with card: Card) {
         cardImage.isHidden = true
+        contentView.addSubview(loadingView)
         loadingView.startAnimating()
 
         if let urlString = card.imageUrl?.replacingOccurrences(of: "http://", with: "https://") {
-    
-            cardImage.loadFrom(URLAddress: urlString) {
-                    self.loadingView.stopAnimating()
-                    self.cardImage.isHidden = false
-                    self.loadingView.removeFromSuperview()
-                    print("####terminou clousure")
-            
+            let placeHolder = UIImage(systemName: "menucard.fill")
+            cardImage.kf.setImage(with: URL(string: urlString), placeholder: placeHolder, options: .none) { _ in
+                self.loadingView.stopAnimating()
+                self.cardImage.isHidden = false
+                self.loadingView.removeFromSuperview()
             }
         } else {
             self.loadingView.stopAnimating()
