@@ -18,6 +18,7 @@ class FavoritesCardsViewModel {
     
     var favoriteCards: [Card] = []
     var favoriteCardsBySection: [[Card]] = []
+    var expansionList: [Set<String>] = []
     
     var cardTypes: [String] = []
     
@@ -67,7 +68,6 @@ class FavoritesCardsViewModel {
             let filteredCards = favoriteCards.filter { card in
                 return card.name?.contains(word) ?? false
             }
-            
             favoriteCardsBySection = filterCardsByType(cards: filteredCards)
         } else {
             favoriteCardsBySection = filterCardsByType(cards: self.favoriteCards)
@@ -88,12 +88,24 @@ class FavoritesCardsViewModel {
         let sections: [[Card]] = uniqueTypes.map { type in
             return cards.filter { $0.type == type }
         }
-//        sections.forEach { cards in
-//            cards.forEach { card in
-//                print(card.name, card.imageUrl)
-//            }
-//        }
+        return sections
+    }
+    
+    private func filterSectionsByWord(cards: [Card]) -> [Set<String>]  {
+        let types = cards.map { card in
+            return card.setName ?? "No Type"
+        }
         
+        let uniqueTypes = Set(types).sorted()
+        
+        self.cardTypes = uniqueTypes
+        
+        let sections: [Set<String>] = uniqueTypes.map { type in
+            let expansions = cards.filter { $0.type == type }.map { card in
+                return card.setName ?? ""
+            }
+            return Set(expansions)
+        }
         return sections
     }
 }
