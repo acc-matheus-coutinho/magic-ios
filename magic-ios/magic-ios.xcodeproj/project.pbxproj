@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11B3DA1289966CC0054FEFD /* ExpansionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B3DA0289966CC0054FEFD /* ExpansionListTableViewCell.swift */; };
 		802B86F52896E9B8005BC424 /* ExpansionCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */; };
 		802B86F82896F1CA005BC424 /* BaseViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */; };
 		802B86FF28971FC5005BC424 /* DescriptionSectionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B11B3DA0289966CC0054FEFD /* ExpansionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionListTableViewCell.swift; sourceTree = "<group>"; };
 		802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsViewController.swift; sourceTree = "<group>"; };
 		802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewConfiguration.swift; sourceTree = "<group>"; };
 		802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionSectionCardsView.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				E4CB3CC4288D9AEC00DB4164 /* ExpansionListView.swift */,
+				B11B3DA0289966CC0054FEFD /* ExpansionListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				8062C53428988E830098D345 /* AlertsError.swift in Sources */,
 				E4CB3CC3288D9ABE00DB4164 /* ExpansionListViewModel.swift in Sources */,
 				E6C5D788289490C900220AAE /* TitleCollectionReusableView.swift in Sources */,
+				B11B3DA1289966CC0054FEFD /* ExpansionListTableViewCell.swift in Sources */,
 				E4CB3CBF288D99C000DB4164 /* CardDetailsViewModel.swift in Sources */,
 				E6A4814828942720004ED7AB /* CardCollectionViewCell.swift in Sources */,
 				E4CB3CBB288D996E00DB4164 /* CardDetailsModel.swift in Sources */,
