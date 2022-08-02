@@ -21,6 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window.windowScene = windowScene
+        let viewModel = ExpansionCardsViewModel(parameter: CardSearchParameter(parameterType: .colors, value: "green"))
+        let viewController = ExpansionCardsViewController(viewModel: viewModel)
+        
+        window.rootViewController = UINavigationController(rootViewController: viewController)
         let viewModel = FavoritesCardsViewModel(magic: Magic())
         let favoritesView = FavoritesCardViewController(viewModel: viewModel)
         window.rootViewController = UINavigationController(rootViewController: favoritesView)

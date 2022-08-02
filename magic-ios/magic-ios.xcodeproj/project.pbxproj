@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		802B86F52896E9B8005BC424 /* ExpansionCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */; };
+		802B86F82896F1CA005BC424 /* BaseViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */; };
+		802B86FF28971FC5005BC424 /* DescriptionSectionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */; };
+		8062C53428988E830098D345 /* AlertsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062C53328988E830098D345 /* AlertsError.swift */; };
+		8062C537289893D20098D345 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8062C536289893D20098D345 /* Kingfisher */; };
+		8062C53D2898BBF90098D345 /* ExpansionCardsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062C53C2898BBF90098D345 /* ExpansionCardsViewModelTest.swift */; };
 		E470D310289167600057BD81 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E470D30F289167600057BD81 /* SnapKit */; };
 		E4CB3C6D288B46A800DB4164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */; };
 		E4CB3C6F288B46A800DB4164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */; };
@@ -53,6 +59,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsViewController.swift; sourceTree = "<group>"; };
+		802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewConfiguration.swift; sourceTree = "<group>"; };
+		802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionSectionCardsView.swift; sourceTree = "<group>"; };
+		8062C53328988E830098D345 /* AlertsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsError.swift; sourceTree = "<group>"; };
+		8062C53C2898BBF90098D345 /* ExpansionCardsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsViewModelTest.swift; sourceTree = "<group>"; };
 		E4CB3C69288B46A800DB4164 /* magic-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8062C537289893D20098D345 /* Kingfisher in Frameworks */,
 				E6C5D78E2898414000220AAE /* Kingfisher in Frameworks */,
 				E470D310289167600057BD81 /* SnapKit in Frameworks */,
 				E4CB3CB1288B56DD00DB4164 /* MTGSDKSwift in Frameworks */,
@@ -110,6 +122,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		802B86F62896F17E005BC424 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8062C538289894CD0098D345 /* Protocols */,
+				8062C53228988E710098D345 /* Alerts */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8062C53228988E710098D345 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				8062C53328988E830098D345 /* AlertsError.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		8062C538289894CD0098D345 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				802B86F72896F1CA005BC424 /* BaseViewConfiguration.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8062C5392898A85C0098D345 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB3CCA288D9B8D00DB4164 /* ExpansionCardsView.swift */,
+				802B86FE28971FC5005BC424 /* DescriptionSectionCardsView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8062C53A2898BBB60098D345 /* ExpansionCards */ = {
+			isa = PBXGroup;
+			children = (
+				8062C53C2898BBF90098D345 /* ExpansionCardsViewModelTest.swift */,
+			);
+			path = ExpansionCards;
+			sourceTree = "<group>";
+		};
 		E4CB3C60288B46A800DB4164 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +205,7 @@
 		E4CB3C85288B46B000DB4164 /* magic-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				8062C53A2898BBB60098D345 /* ExpansionCards */,
 				E4CB3C86288B46B000DB4164 /* magic_iosTests.swift */,
 			);
 			path = "magic-iosTests";
@@ -198,6 +253,7 @@
 		E4CB3CA2288B54DC00DB4164 /* ExpansionCards */ = {
 			isa = PBXGroup;
 			children = (
+				802B86F62896F17E005BC424 /* Util */,
 				E4CB3CAB288B556A00DB4164 /* Model */,
 				E4CB3CAA288B556400DB4164 /* ViewModel */,
 				E4CB3CA9288B555F00DB4164 /* View */,
@@ -256,7 +312,8 @@
 		E4CB3CA9288B555F00DB4164 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E4CB3CCA288D9B8D00DB4164 /* ExpansionCardsView.swift */,
+				802B86F42896E9B8005BC424 /* ExpansionCardsViewController.swift */,
+				8062C5392898A85C0098D345 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -466,12 +523,16 @@
 				E6C5D7862894634500220AAE /* UIImageView+Extensions.swift in Sources */,
 				E4CB3CBD288D99A900DB4164 /* CardDetailsView.swift in Sources */,
 				E4CB3CC1288D9A9B00DB4164 /* ExpansionListModel.swift in Sources */,
+				802B86F52896E9B8005BC424 /* ExpansionCardsViewController.swift in Sources */,
+				802B86F82896F1CA005BC424 /* BaseViewConfiguration.swift in Sources */,
+				8062C53428988E830098D345 /* AlertsError.swift in Sources */,
 				E4CB3CC3288D9ABE00DB4164 /* ExpansionListViewModel.swift in Sources */,
 				E6C5D788289490C900220AAE /* TitleCollectionReusableView.swift in Sources */,
 				E4CB3CBF288D99C000DB4164 /* CardDetailsViewModel.swift in Sources */,
 				E6A4814828942720004ED7AB /* CardCollectionViewCell.swift in Sources */,
 				E4CB3CBB288D996E00DB4164 /* CardDetailsModel.swift in Sources */,
 				E4CB3CD1288D9BF900DB4164 /* FavoritesCardsView.swift in Sources */,
+				802B86FF28971FC5005BC424 /* DescriptionSectionCardsView.swift in Sources */,
 				E4CB3CCB288D9B8D00DB4164 /* ExpansionCardsView.swift in Sources */,
 				E4CB3CCD288D9BCB00DB4164 /* FavoritesCardsModel.swift in Sources */,
 				E4CB3CC5288D9AEC00DB4164 /* ExpansionListView.swift in Sources */,
@@ -484,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8062C53D2898BBF90098D345 /* ExpansionCardsViewModelTest.swift in Sources */,
 				E4CB3C87288B46B000DB4164 /* magic_iosTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -808,6 +870,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8062C535289893D20098D345 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		E470D30E289167600057BD81 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -835,6 +905,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8062C536289893D20098D345 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8062C535289893D20098D345 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		E470D30F289167600057BD81 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E470D30E289167600057BD81 /* XCRemoteSwiftPackageReference "SnapKit" */;
