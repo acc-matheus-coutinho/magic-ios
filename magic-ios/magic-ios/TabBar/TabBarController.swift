@@ -10,7 +10,7 @@ import MTGSDKSwift
 
 class TabBarController: UITabBarController {
     
-    private let expansionsList: ExpansionCardsViewController = {
+    private let expansionsList: UINavigationController = {
         let viewModel = ExpansionCardsViewModel(parameter: CardSearchParameter(parameterType: .colors, value: "green"))
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
@@ -19,18 +19,22 @@ class TabBarController: UITabBarController {
         let tabBarItem = UITabBarItem(title: "Expansões", image: nil, selectedImage: nil)
         tabBarItem.badgeColor = .white
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)], for: .normal)
-        viewController.tabBarItem = tabBarItem
-        return viewController
+        
+        let navigation = UINavigationController(rootViewController: viewController)
+        navigation.tabBarItem = tabBarItem
+        return navigation
     }()
     
-    private let favoritesList: FavoritesCardViewController = {
+    private let favoritesList: UINavigationController = {
         let viewModel = FavoritesCardsViewModel(magic: Magic())
         let view = FavoritesCardViewController(viewModel: viewModel)
         
         let tabBarItem = UITabBarItem(title: "Favoritos", image: nil, selectedImage: nil)
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)], for: .normal)
-        view.tabBarItem = tabBarItem
-        return view
+
+        let navigation = UINavigationController(rootViewController: view)
+        navigation.tabBarItem = tabBarItem
+        return navigation
     }()
     
     override func viewDidLoad() {
