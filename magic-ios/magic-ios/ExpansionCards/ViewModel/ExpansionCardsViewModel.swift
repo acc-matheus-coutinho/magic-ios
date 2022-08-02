@@ -47,7 +47,8 @@ final class ExpansionCardsViewModel {
         guard let parameter = parameter else {
             return
         }
-        magic.fetchCards([parameter]) { result in
+        magic.fetchCards([parameter]) { [weak self] result in
+            guard let self = self else {return}
             switch result {
             case .success(let cards):
                 self.expansionCards = cards

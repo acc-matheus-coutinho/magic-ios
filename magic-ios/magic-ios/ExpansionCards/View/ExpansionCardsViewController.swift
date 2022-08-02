@@ -11,7 +11,7 @@ import SnapKit
 
 class ExpansionCardsViewController: UIViewController {
     
-    var viewModel: ExpansionCardsViewModel
+    let viewModel: ExpansionCardsViewModel
     
     //MARK: - UX
     private let background: UIImageView = {
@@ -118,6 +118,7 @@ extension ExpansionCardsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExpansionCardViewCell.identifier,
                                                             for: indexPath) as? ExpansionCardViewCell else
                                                             { return UICollectionViewCell() }
@@ -136,7 +137,7 @@ extension ExpansionCardsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let item = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
-        print(item)
+        //print(item)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
