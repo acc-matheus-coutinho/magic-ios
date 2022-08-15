@@ -53,7 +53,7 @@ class ExpansionListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
         setupConstraints()
         setupCollectionView()
@@ -65,6 +65,13 @@ class ExpansionListViewController: UIViewController {
         view.backgroundColor = .darkGray
         view.addSubview(backgroundImage)
         view.addSubview(tableView)
+        
+        title = "Expansões"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        if var textAttributes = navigationController?.navigationBar.titleTextAttributes {
+            textAttributes[NSAttributedString.Key.foregroundColor] = UIColor.white
+            navigationController?.navigationBar.titleTextAttributes = textAttributes
+        }
     }
     
     private func setupConstraints() {
@@ -82,6 +89,7 @@ class ExpansionListViewController: UIViewController {
     
     private func setupCollectionView() {
         tableView.register(ExpansionListTableViewCell.self, forCellReuseIdentifier: ExpansionListTableViewCell.identifier)
+        tableView.register(FirstLetterSectionView.self, forHeaderFooterViewReuseIdentifier: FirstLetterSectionView.identifier)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -108,10 +116,20 @@ extension ExpansionListViewController: ExpansionListManager {
 extension ExpansionListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        to do
+        let expansionsSet = viewModel.expansionListBySection[indexPath.section]
+        let selectedExpansion = expansionsSet[expansionsSet.index(expansionsSet.startIndex, offsetBy: indexPath.row)]
+        
+        let viewModel = ExpansionCardsViewModel(parameters: [], setName: selectedExpansion, magicApi: viewModel.magic)
+        let viewController = ExpansionCardsViewController(viewModel: viewModel)
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
 }
@@ -121,11 +139,23 @@ extension ExpansionListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExpansionListTableViewCell.identifier, for: indexPath) as? ExpansionListTableViewCell else
         { return UITableViewCell() }
         
-//        let section = viewModel.expansionListBySection[indexPath.section]
+        let section = viewModel.expansionListBySection[indexPath.section]
         
-//        let index = section.index(section.startIndex, offsetBy: indexPath.row)
-//        cell.configure(text: section[index])
+        let index = section.index(section.startIndex, offsetBy: indexPath.row)
+        cell.configure(text: section[index])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let description = FirstLetterSectionView.identifier
+
+        if let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: description) as? FirstLetterSectionView {
+            sectionHeader.configure(text: viewModel.cardNames[section])
+
+            return sectionHeader
+        }
+        return UITableViewHeaderFooterView()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

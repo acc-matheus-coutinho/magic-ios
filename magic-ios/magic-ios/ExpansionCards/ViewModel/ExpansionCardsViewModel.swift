@@ -46,19 +46,23 @@ final class ExpansionCardsViewModel {
     // MARK: - Methods
     
     func getCards() {
-
-//        magic.fetchCards(parameters) { [weak self] result in
-//            guard let self = self else {return}
-//            switch result {
-//            case .success(let cards):
-//                self.expansionCards = cards
-//                print(cards)
-//                self.sectionExpansionCards = self.filterCardsByType(cards: cards)
-//                self.delegate?.getCards()
-//            case .error(_):
-//                self.delegate?.getCardsError()
-//            }
-//        }
+        
+        let parameters: [CardSearchParameter] = [
+            
+            .init(.setName, value: "Khans of Tarkir")
+        ]
+        
+        magic.fetchCards(with: parameters) { response in
+            switch response.result {
+            case .success(let data):
+                self.expansionCards = data.cards
+                self.sectionExpansionCards = self.filterCardsByType(cards: data.cards)
+                self.delegate?.getCards()
+                
+            case .failure(let error):
+                self.delegate?.getCardsError()
+            }
+        }
     }
     
     public func cardsCount(index: Int) -> Int {
@@ -89,7 +93,6 @@ final class ExpansionCardsViewModel {
         let sections: [[Card]] = uniqueTypes.map { type in
             return cards.filter { $0.type == type }
         }
-        print(sections)
         return sections
     }
     
@@ -102,7 +105,7 @@ final class ExpansionCardsViewModel {
         } else {
             sectionExpansionCards = filterCardsByType(cards: self.expansionCards)
         }
-
+        
         delegate?.getCards()
     }
 }

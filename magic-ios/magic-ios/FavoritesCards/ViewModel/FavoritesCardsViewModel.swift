@@ -31,35 +31,6 @@ class FavoritesCardsViewModel {
     
     public func getFavoriteCards() {
         
-//        magic.fetchCards([], configuration: .init(pageSize: 100, pageTotal: 10)) {
-//            result in
-//            switch result {
-//            case .success(let cards):
-//                self.favoriteCards = cards
-//                self.favoriteCardsBySection = self.filterCardsByType(cards: cards)
-//                self.delegate?.getCardsSuccess()
-//                
-//            case .error(let error):
-//                print(error.localizedDescription)
-//                self.delegate?.getCardsError()
-//            }
-//        }
-        
-//        magic.fetchCards([]) { result in
-//            switch result {
-//            case .success(let cards):
-//                cards.forEach { card in
-//                    print(card.name, card.imageUrl)
-//                }
-//                self.favoriteCards = cards
-//                self.favoriteCardsBySection = self.filterCardsByType(cards: cards)
-//                self.delegate?.getCardsSuccess()
-//
-//            case .error(let error):
-//                print(error.localizedDescription)
-//                self.delegate?.getCardsError()
-//            }
-//        }
     }
     
     public func filterCardsWith(word: String?) {

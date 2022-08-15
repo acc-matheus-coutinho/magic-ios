@@ -23,7 +23,7 @@ final public class MagicAPI: MagicAPIProtocol {
 
     public func fetchCards(with parameters: [CardSearchParameter]? = nil, completion: @escaping (AFDataResponse<CardsResponse>) -> Void) {
         
-        AF.request(MagicRouter.cards(parameters)).responseDecodable(of: CardsResponse.self,completionHandler: completion)
+        AF.request(MagicRouter.cards(parameters)).responseDecodable(of: CardsResponse.self, completionHandler: completion)
     }
 
     public func fetchTypes(completion: @escaping (AFDataResponse<CardTypesResponse>) -> Void) {

@@ -27,17 +27,17 @@ public enum MagicRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .sets:
-            return "/sets"
+            return "/v1/sets"
         case .cards:
-            return "/cards"
+            return "/v1/cards"
         case .types:
-            return "/types"
+            return "/v1/types"
         case .subtypes:
-            return "/subtypes"
+            return "/v1/subtypes"
         case .supertypes:
-            return "/supertypes"
+            return "/v1/supertypes"
         case .formats:
-            return "/formats"
+            return "/v1/formats"
         }
     }
 
@@ -53,7 +53,7 @@ public enum MagicRouter: URLRequestConvertible {
     }
 
     static let urlScheme: String = "https"
-    static let urlBase: String = "api.magicthegathering.io/v1"
+    static let urlBase: String = "api.magicthegathering.io"
 
     public func asURLRequest() throws -> URLRequest {
         var urlComponents = URLComponents()
@@ -66,6 +66,7 @@ public enum MagicRouter: URLRequestConvertible {
             print("ERROR: Couldn't create the full URL")
             return URLRequest(url: try MagicRouter.urlBase.asURL())
         }
+        
         let request = try URLRequest(
             url: url,
             method: method

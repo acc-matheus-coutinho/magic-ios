@@ -52,6 +52,7 @@
 		E674C27C289959EC00A10E05 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674C27B289959EC00A10E05 /* TabBarController.swift */; };
 		E674C27E28995DFA00A10E05 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674C27D28995DFA00A10E05 /* UIView+Extensions.swift */; };
 		E6A4814828942720004ED7AB /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A4814728942720004ED7AB /* CardCollectionViewCell.swift */; };
+		E6B9968028AAF02E0004EB96 /* FirstLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9967F28AAF02E0004EB96 /* FirstLetterView.swift */; };
 		E6C5D7862894634500220AAE /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5D7852894634500220AAE /* UIImageView+Extensions.swift */; };
 		E6C5D788289490C900220AAE /* TitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5D787289490C900220AAE /* TitleCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		E674C27B289959EC00A10E05 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E674C27D28995DFA00A10E05 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E6A4814728942720004ED7AB /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		E6B9967F28AAF02E0004EB96 /* FirstLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLetterView.swift; sourceTree = "<group>"; };
 		E6C5D7852894634500220AAE /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		E6C5D787289490C900220AAE /* TitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -328,6 +330,7 @@
 		E4CB3CA7288B554600DB4164 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E6B9967E28AAF0180004EB96 /* Cell */,
 				E4CB3CC4288D9AEC00DB4164 /* ExpansionListView.swift */,
 				B11B3DA0289966CC0054FEFD /* ExpansionListTableViewCell.swift */,
 			);
@@ -459,6 +462,14 @@
 				E674C27B289959EC00A10E05 /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		E6B9967E28AAF0180004EB96 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E6B9967F28AAF02E0004EB96 /* FirstLetterView.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E6C5D7832894633300220AAE /* Common */ = {
@@ -656,6 +667,7 @@
 				E4CB3CC5288D9AEC00DB4164 /* ExpansionListView.swift in Sources */,
 				E4CB3C6F288B46A800DB4164 /* SceneDelegate.swift in Sources */,
 				E4CB3CC9288D9B7C00DB4164 /* ExpansionCardsViewModel.swift in Sources */,
+				E6B9968028AAF02E0004EB96 /* FirstLetterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

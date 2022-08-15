@@ -10,7 +10,22 @@ import UIKit
 class TabBarController: UITabBarController {
     
     private let expansionsList: UINavigationController = {
-        let viewModel = ExpansionCardsViewModel(parameters: [], setName: "KTK", magicApi: MagicAPI())
+        let viewModel = ExpansionListViewModel(magic: MagicAPI())
+        let viewController = ExpansionListViewController(viewModel: viewModel)
+        
+        let appearance = UITabBarItemAppearance()
+        
+        let tabBarItem = UITabBarItem(title: "Expansões", image: nil, selectedImage: nil)
+        tabBarItem.badgeColor = .white
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)], for: .normal)
+        
+        let navigation = UINavigationController(rootViewController: viewController)
+        navigation.tabBarItem = tabBarItem
+        return navigation
+    }()
+    
+    private let expansionsCards: UINavigationController = {
+        let viewModel = ExpansionCardsViewModel(parameters: [], setName: "Khans of Tarkir", magicApi: MagicAPI())
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
         let appearance = UITabBarItemAppearance()
@@ -43,7 +58,7 @@ class TabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.viewControllers = [expansionsList, favoritesList]
+        self.viewControllers = [expansionsList]
     }
     
     private func configTabBar() {

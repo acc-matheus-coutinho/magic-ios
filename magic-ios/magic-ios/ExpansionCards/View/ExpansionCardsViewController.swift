@@ -153,8 +153,6 @@ extension ExpansionCardsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let item = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
-//        print(item.name, item.setName)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

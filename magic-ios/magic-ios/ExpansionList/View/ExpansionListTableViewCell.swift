@@ -26,7 +26,7 @@ class ExpansionListTableViewCell: UITableViewCell {
        
         self.backgroundColor = .clear
        
-        
+        self.selectionStyle = .none
         buildViewHierarchy()
         configConstraints()
     }

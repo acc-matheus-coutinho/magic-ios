@@ -24,9 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window.windowScene = windowScene
         
-        let viewModel = ExpansionListViewModel(magic: MagicAPI())
-        let viewController = ExpansionListViewController(viewModel: viewModel)
-        window.rootViewController = UINavigationController(rootViewController: viewController)
+        window.rootViewController = TabBarController()
         window.makeKeyAndVisible()
         
         self.window = window

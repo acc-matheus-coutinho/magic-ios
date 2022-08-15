@@ -16,7 +16,7 @@ public protocol ExpansionListManager: AnyObject {
 
 class ExpansionListViewModel {
     
-    var expansionListCards: [Card] = []
+    var expansionListCards: [CardSet] = []
     var expansionListBySection: [Set<String>]  = []
     
     var cardNames: [String] = []
@@ -30,55 +30,36 @@ class ExpansionListViewModel {
     }
     
     public func getExpansionList() {
-        let parameters: [CardSearchParameter] = [
-//            .init(.name, value: "nome"),
-            .init(.setName, value: "KTK")
-        ]
+        let parameters: [SetSearchParameter] = []
         
-        magic.fetchCards(with: parameters) { response in
+        magic.fetchSets(with: parameters) { response in
             switch response.result {
             case .success(let data):
-                print(data)
+                self.expansionListCards = data.sets
+                self.expansionListBySection = self.filterSectionsByWord(sets: data.sets)
+                self.delegate?.getCardsSuccess()
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
-//        magic.fetchSets([]) { result in
-//            switch result {
-//                case .success(let sets):
-//                    print(sets)
-//                case .error(let error):
-//                    print(error)
-//            }
-//        }
-//
-//        magic.fetchCards([], configuration: .init(pageSize: 300, pageTotal: 5)) { result in
-//            switch result {
-//                case .success(let cards):
-//                    self.expansionListCards = cards
-//                    self.expansionListBySection = self.filterSectionsByWord(cards: cards)
-//                    self.delegate?.getCardsSuccess()
-//
-//                case .error(let error):
-//                    print(error.localizedDescription)
-//                    self.delegate?.getCardsError()
-//            }
-//        }
     }
     
-//    private func filterSectionsByWord(cards: [Card]) -> [Set<String>]  {
-//            let types = cards.map { card in
-//                return card.setName ?? "No Type"
-//            }
-//            let uniqueTypes = Set(types).sorted()
-//            self.cardNames = uniqueTypes
-//            let sections: [Set<String>] = uniqueTypes.map { type in
-//                let expansions = cards.filter { $0.setName == type }.map { card in
-//                    return card.setName ?? ""
-//                }
-//                return Set(expansions)
-//            }
-//            return sections
-//    }
+    private func filterSectionsByWord(sets: [CardSet]) -> [Set<String>]  {
+        let names = sets.map { card in
+            return "\(card.name?.prefix(1) ?? "0")"
+        }
+        let uniqueNames = Set(names).sorted()
+        self.cardNames = uniqueNames
+        let sections: [Set<String>] = uniqueNames.map { firstLetter in
+            let expansions = sets.filter { cardSet in
+                cardSet.name?.hasPrefix(firstLetter) ?? false
+            }
+            let expansionNames = expansions.map { cardSet in
+                return cardSet.name ?? "No name"
+            }
+            return Set(expansionNames)
+        }
+        return sections
+    }
 }
