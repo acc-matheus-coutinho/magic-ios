@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MTGSDKSwift
 import Kingfisher
 
 class ExpansionCardViewCell: UICollectionViewCell {

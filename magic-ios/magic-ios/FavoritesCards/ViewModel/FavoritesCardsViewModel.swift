@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MTGSDKSwift
 
 public protocol FavoriteCardsManager: AnyObject {
     func getCardsSuccess()
@@ -22,29 +21,29 @@ class FavoritesCardsViewModel {
     
     var cardTypes: [String] = []
     
-    let magic: Magic!
+    let magic: MagicAPIProtocol!
     
     weak var delegate: FavoriteCardsManager?
     
-    init(magic: Magic) {
+    init(magic: MagicAPIProtocol) {
         self.magic = magic
     }
     
     public func getFavoriteCards() {
         
-        magic.fetchCards([], configuration: .init(pageSize: 100, pageTotal: 10)) {
-            result in
-            switch result {
-            case .success(let cards):
-                self.favoriteCards = cards
-                self.favoriteCardsBySection = self.filterCardsByType(cards: cards)
-                self.delegate?.getCardsSuccess()
-                
-            case .error(let error):
-                print(error.localizedDescription)
-                self.delegate?.getCardsError()
-            }
-        }
+//        magic.fetchCards([], configuration: .init(pageSize: 100, pageTotal: 10)) {
+//            result in
+//            switch result {
+//            case .success(let cards):
+//                self.favoriteCards = cards
+//                self.favoriteCardsBySection = self.filterCardsByType(cards: cards)
+//                self.delegate?.getCardsSuccess()
+//                
+//            case .error(let error):
+//                print(error.localizedDescription)
+//                self.delegate?.getCardsError()
+//            }
+//        }
         
 //        magic.fetchCards([]) { result in
 //            switch result {

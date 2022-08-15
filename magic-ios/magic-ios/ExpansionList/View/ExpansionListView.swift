@@ -7,8 +7,6 @@
 
 import UIKit
 import SnapKit
-import MTGSDKSwift
-
 
 class ExpansionListViewController: UIViewController {
     
@@ -123,10 +121,10 @@ extension ExpansionListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExpansionListTableViewCell.identifier, for: indexPath) as? ExpansionListTableViewCell else
         { return UITableViewCell() }
         
-        let section = viewModel.expansionListBySection[indexPath.section]
+//        let section = viewModel.expansionListBySection[indexPath.section]
         
-        let index = section.index(section.startIndex, offsetBy: indexPath.row)
-        cell.configure(text: section[index])
+//        let index = section.index(section.startIndex, offsetBy: indexPath.row)
+//        cell.configure(text: section[index])
         return cell
     }
     

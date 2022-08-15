@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import MTGSDKSwift
 
 class TabBarController: UITabBarController {
     
     private let expansionsList: UINavigationController = {
-        let viewModel = ExpansionCardsViewModel(parameters: [], setName: "KTK")
+        let viewModel = ExpansionCardsViewModel(parameters: [], setName: "KTK", magicApi: MagicAPI())
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
         let appearance = UITabBarItemAppearance()
@@ -26,7 +25,7 @@ class TabBarController: UITabBarController {
     }()
     
     private let favoritesList: UINavigationController = {
-        let viewModel = FavoritesCardsViewModel(magic: Magic())
+        let viewModel = FavoritesCardsViewModel(magic: MagicAPI())
         let view = FavoritesCardViewController(viewModel: viewModel)
         
         let tabBarItem = UITabBarItem(title: "Favoritos", image: nil, selectedImage: nil)

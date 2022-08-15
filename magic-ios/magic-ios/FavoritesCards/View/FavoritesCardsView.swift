@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import MTGSDKSwift
 
 class FavoritesCardViewController: UIViewController {
     
@@ -164,7 +163,7 @@ extension FavoritesCardViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as? CardCollectionViewCell else
         { return UICollectionViewCell() }
         
-        cell.configure(with: viewModel.favoriteCardsBySection[indexPath.section][indexPath.item])
+//        cell.configure(with: viewModel.favoriteCardsBySection[indexPath.section][indexPath.item])
         return cell
     }
     

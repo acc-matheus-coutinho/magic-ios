@@ -7,9 +7,8 @@
 
 
 import Foundation
-import MTGSDKSwift
 
-struct CardsByName {
-    let type: String
-    let cards: [Card]
-}
+//struct CardsByName {
+//    let type: String
+//    let cards: [Card]
+//}

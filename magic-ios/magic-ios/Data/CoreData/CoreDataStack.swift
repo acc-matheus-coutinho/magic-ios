@@ -6,7 +6,6 @@
 //
 
 import CoreData
-import MTGSDKSwift
 import UIKit
 
 class CoreDataStack {

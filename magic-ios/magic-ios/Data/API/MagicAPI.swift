@@ -22,6 +22,7 @@ final public class MagicAPI: MagicAPIProtocol {
     }
 
     public func fetchCards(with parameters: [CardSearchParameter]? = nil, completion: @escaping (AFDataResponse<CardsResponse>) -> Void) {
+        
         AF.request(MagicRouter.cards(parameters)).responseDecodable(of: CardsResponse.self,completionHandler: completion)
     }
 
@@ -36,5 +37,4 @@ final public class MagicAPI: MagicAPIProtocol {
     public func fetchSupertypes(completion: @escaping (AFDataResponse<CardSupertypesResponse>) -> Void) {
         AF.request(MagicRouter.supertypes).responseDecodable(of: CardSupertypesResponse.self, completionHandler: completion)
     }
-
 }

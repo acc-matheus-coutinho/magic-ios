@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MTGSDKSwift
 
 public protocol CardsRequests: AnyObject {
     func getCards()
@@ -21,15 +20,15 @@ final class ExpansionCardsViewModel {
     private var sectionExpansionCards: [[Card]] = []
     private var types: [String] = []
     
-    let magic = Magic()
+    let magic: MagicAPIProtocol!
     
     // MARK: - Parametros
     
     var parameters: [CardSearchParameter] = []
     
-    let cmc = CardSearchParameter(parameterType: .name, value: "Bogardan Firefiend")
-    let color = CardSearchParameter(parameterType: .colors, value: "red")
-    let setCode = CardSearchParameter(parameterType: .set, value: "KTK")
+    let cmc = CardSearchParameter( .name, value: "Bogardan Firefiend")
+    let color = CardSearchParameter( .colors, value: "red")
+    let setCode = CardSearchParameter( .setName , value: "KTK")
     
     // MARK: - Delegate
     
@@ -37,8 +36,9 @@ final class ExpansionCardsViewModel {
     
     // MARK: - Init
     
-    init(parameters: [CardSearchParameter], setName: String) {
-        let setCode = CardSearchParameter(parameterType: .set, value: setName)
+    init(parameters: [CardSearchParameter], setName: String, magicApi: MagicAPIProtocol) {
+        self.magic = magicApi
+        let setCode = CardSearchParameter(.setName, value: setName)
         self.parameters.append(setCode)
         self.parameters.append(contentsOf: parameters)
     }
@@ -47,18 +47,18 @@ final class ExpansionCardsViewModel {
     
     func getCards() {
 
-        magic.fetchCards(parameters) { [weak self] result in
-            guard let self = self else {return}
-            switch result {
-            case .success(let cards):
-                self.expansionCards = cards
-                print(cards)
-                self.sectionExpansionCards = self.filterCardsByType(cards: cards)
-                self.delegate?.getCards()
-            case .error(_):
-                self.delegate?.getCardsError()
-            }
-        }
+//        magic.fetchCards(parameters) { [weak self] result in
+//            guard let self = self else {return}
+//            switch result {
+//            case .success(let cards):
+//                self.expansionCards = cards
+//                print(cards)
+//                self.sectionExpansionCards = self.filterCardsByType(cards: cards)
+//                self.delegate?.getCards()
+//            case .error(_):
+//                self.delegate?.getCardsError()
+//            }
+//        }
     }
     
     public func cardsCount(index: Int) -> Int {

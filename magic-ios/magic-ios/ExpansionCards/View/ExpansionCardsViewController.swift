@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MTGSDKSwift
 import SnapKit
 
 class ExpansionCardsViewController: UIViewController {
@@ -154,7 +153,7 @@ extension ExpansionCardsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let item = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
-        print(item.name, item.setName)
+//        print(item.name, item.setName)
         
     }
     
