@@ -109,6 +109,10 @@ extension ExpansionListViewController: ExpansionListManager {
     }
     
     func getCardsError() {
+        DispatchQueue.main.async {
+            let alerta = AlertRequestFail(title: "Erro", message: "Tente outra vez").alert()
+            self.present(alerta, animated: true)
+        }
     }
 }
 
@@ -118,8 +122,8 @@ extension ExpansionListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let expansionsSet = viewModel.expansionListBySection[indexPath.section]
         let selectedExpansion = expansionsSet[expansionsSet.index(expansionsSet.startIndex, offsetBy: indexPath.row)]
-        
-        let viewModel = ExpansionCardsViewModel(parameters: [], setName: selectedExpansion, magicApi: viewModel.magic)
+        let setCode = CardSearchParameter( .setName , value: selectedExpansion)
+        let viewModel = ExpansionCardsViewModel(parameters: [setCode], setName: selectedExpansion, magicApi: viewModel.magic)
         let viewController = ExpansionCardsViewController(viewModel: viewModel)
         
         self.navigationController?.pushViewController(viewController, animated: true)

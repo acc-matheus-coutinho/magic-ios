@@ -40,7 +40,8 @@ class ExpansionListViewModel {
                 self.delegate?.getCardsSuccess()
                 
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
+                self.delegate?.getCardsError()
             }
         }
     }

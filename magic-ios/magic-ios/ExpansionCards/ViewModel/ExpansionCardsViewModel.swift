@@ -26,10 +26,6 @@ final class ExpansionCardsViewModel {
     
     var parameters: [CardSearchParameter] = []
     
-    let cmc = CardSearchParameter( .name, value: "Bogardan Firefiend")
-    let color = CardSearchParameter( .colors, value: "red")
-    let setCode = CardSearchParameter( .setName , value: "KTK")
-    
     // MARK: - Delegate
     
     weak var delegate: CardsRequests?
@@ -47,12 +43,7 @@ final class ExpansionCardsViewModel {
     
     func getCards() {
         
-        let parameters: [CardSearchParameter] = [
-            
-            .init(.setName, value: "Khans of Tarkir")
-        ]
-        
-        magic.fetchCards(with: parameters) { response in
+        magic.fetchCards(with: self.parameters) { response in
             switch response.result {
             case .success(let data):
                 self.expansionCards = data.cards
@@ -61,6 +52,7 @@ final class ExpansionCardsViewModel {
                 
             case .failure(let error):
                 self.delegate?.getCardsError()
+                print(error.localizedDescription)
             }
         }
     }
