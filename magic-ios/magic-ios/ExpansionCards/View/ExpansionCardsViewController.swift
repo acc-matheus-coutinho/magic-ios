@@ -151,7 +151,12 @@ extension ExpansionCardsViewController: UICollectionViewDataSource {
 extension ExpansionCardsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
+
+        let selectedCard = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
+
+        let controller = CardDetailsController(viewModel: CardDetailsViewModel(cards: viewModel.expansionCards, initialCard: selectedCard))
+        self.navigationController?.pushViewController(controller, animated: true)
+
 //        let item = viewModel.sectionExpansionCard(indexSection: indexPath.section, indexItem: indexPath.item)
     }
     

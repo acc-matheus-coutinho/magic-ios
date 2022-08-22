@@ -15,6 +15,9 @@
 		8062C53D2898BBF90098D345 /* ExpansionCardsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062C53C2898BBF90098D345 /* ExpansionCardsViewModelTest.swift */; };
 		B11B3DA1289966CC0054FEFD /* ExpansionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B3DA0289966CC0054FEFD /* ExpansionListTableViewCell.swift */; };
 		E470D310289167600057BD81 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E470D30F289167600057BD81 /* SnapKit */; };
+		E4C6D0C028AC079200041786 /* CardDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6D0BF28AC079200041786 /* CardDetailsController.swift */; };
+		E4C6D0C228AC0BDA00041786 /* CardDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6D0C128AC0BDA00041786 /* CardDetailsCell.swift */; };
+		E4CAB0EA28B3AC81000D38CB /* ExpansionCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CAB0E928B3AC81000D38CB /* ExpansionCardsViewModel.swift */; };
 		E4CB3C6D288B46A800DB4164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */; };
 		E4CB3C6F288B46A800DB4164 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */; };
 		E4CB3C77288B46A800DB4164 /* magic_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3C75288B46A800DB4164 /* magic_ios.xcdatamodeld */; };
@@ -30,7 +33,6 @@
 		E4CB3CC3288D9ABE00DB4164 /* ExpansionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CC2288D9ABE00DB4164 /* ExpansionListViewModel.swift */; };
 		E4CB3CC5288D9AEC00DB4164 /* ExpansionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CC4288D9AEC00DB4164 /* ExpansionListView.swift */; };
 		E4CB3CC7288D9B6E00DB4164 /* ExpansionCardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CC6288D9B6E00DB4164 /* ExpansionCardsModel.swift */; };
-		E4CB3CC9288D9B7C00DB4164 /* ExpansionCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CC8288D9B7C00DB4164 /* ExpansionCardsViewModel.swift */; };
 		E4CB3CCB288D9B8D00DB4164 /* ExpansionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CCA288D9B8D00DB4164 /* ExpansionCardsView.swift */; };
 		E4CB3CCD288D9BCB00DB4164 /* FavoritesCardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CCC288D9BCB00DB4164 /* FavoritesCardsModel.swift */; };
 		E4CB3CCF288D9BED00DB4164 /* FavoritesCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB3CCE288D9BED00DB4164 /* FavoritesCardsViewModel.swift */; };
@@ -81,6 +83,9 @@
 		8062C53328988E830098D345 /* AlertsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsError.swift; sourceTree = "<group>"; };
 		8062C53C2898BBF90098D345 /* ExpansionCardsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsViewModelTest.swift; sourceTree = "<group>"; };
 		B11B3DA0289966CC0054FEFD /* ExpansionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionListTableViewCell.swift; sourceTree = "<group>"; };
+		E4C6D0BF28AC079200041786 /* CardDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsController.swift; sourceTree = "<group>"; };
+		E4C6D0C128AC0BDA00041786 /* CardDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsCell.swift; sourceTree = "<group>"; };
+		E4CAB0E928B3AC81000D38CB /* ExpansionCardsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpansionCardsViewModel.swift; path = "magic-ios/ExpansionCards/ViewModel/ExpansionCardsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		E4CB3C69288B46A800DB4164 /* magic-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CB3C6C288B46A800DB4164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4CB3C6E288B46A800DB4164 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +105,6 @@
 		E4CB3CC2288D9ABE00DB4164 /* ExpansionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionListViewModel.swift; sourceTree = "<group>"; };
 		E4CB3CC4288D9AEC00DB4164 /* ExpansionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionListView.swift; sourceTree = "<group>"; };
 		E4CB3CC6288D9B6E00DB4164 /* ExpansionCardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsModel.swift; sourceTree = "<group>"; };
-		E4CB3CC8288D9B7C00DB4164 /* ExpansionCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsViewModel.swift; sourceTree = "<group>"; };
 		E4CB3CCA288D9B8D00DB4164 /* ExpansionCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCardsView.swift; sourceTree = "<group>"; };
 		E4CB3CCC288D9BCB00DB4164 /* FavoritesCardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCardsModel.swift; sourceTree = "<group>"; };
 		E4CB3CCE288D9BED00DB4164 /* FavoritesCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCardsViewModel.swift; sourceTree = "<group>"; };
@@ -287,9 +291,9 @@
 		E4CB3CA2288B54DC00DB4164 /* ExpansionCards */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB3CAA288B556400DB4164 /* ViewModel */,
 				802B86F62896F17E005BC424 /* Util */,
 				E4CB3CAB288B556A00DB4164 /* Model */,
-				E4CB3CAA288B556400DB4164 /* ViewModel */,
 				E4CB3CA9288B555F00DB4164 /* View */,
 			);
 			path = ExpansionCards;
@@ -298,7 +302,9 @@
 		E4CB3CA3288B551000DB4164 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E4C6D0BF28AC079200041786 /* CardDetailsController.swift */,
 				E4CB3CBC288D99A900DB4164 /* CardDetailsView.swift */,
+				E4C6D0C128AC0BDA00041786 /* CardDetailsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,9 +363,10 @@
 		E4CB3CAA288B556400DB4164 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				E4CB3CC8288D9B7C00DB4164 /* ExpansionCardsViewModel.swift */,
+				E4CAB0E928B3AC81000D38CB /* ExpansionCardsViewModel.swift */,
 			);
-			path = ViewModel;
+			name = ViewModel;
+			path = ../FavoritesCards/Model/ViewModel;
 			sourceTree = "<group>";
 		};
 		E4CB3CAB288B556A00DB4164 /* Model */ = {
@@ -631,6 +638,7 @@
 			files = (
 				E4CB3C77288B46A800DB4164 /* magic_ios.xcdatamodeld in Sources */,
 				E654D1EE28A7D2D4001CA087 /* CardTypes.swift in Sources */,
+				E4CAB0EA28B3AC81000D38CB /* ExpansionCardsViewModel.swift in Sources */,
 				E654D1F128A7D2D4001CA087 /* MagicRouter.swift in Sources */,
 				E4CB3CC7288D9B6E00DB4164 /* ExpansionCardsModel.swift in Sources */,
 				E654D1F728A7D2D4001CA087 /* CardSearchParameter.swift in Sources */,
@@ -648,6 +656,7 @@
 				8062C53428988E830098D345 /* AlertsError.swift in Sources */,
 				E4CB3CC3288D9ABE00DB4164 /* ExpansionListViewModel.swift in Sources */,
 				E6C5D788289490C900220AAE /* TitleCollectionReusableView.swift in Sources */,
+				E4C6D0C228AC0BDA00041786 /* CardDetailsCell.swift in Sources */,
 				E654D1F528A7D2D4001CA087 /* MagicAPI.swift in Sources */,
 				E654D1F228A7D2D4001CA087 /* TypesResponse.swift in Sources */,
 				B11B3DA1289966CC0054FEFD /* ExpansionListTableViewCell.swift in Sources */,
@@ -655,6 +664,7 @@
 				E654D1F328A7D2D4001CA087 /* CardsResponse.swift in Sources */,
 				E654D1F628A7D2D4001CA087 /* SearchParameter.swift in Sources */,
 				E6A4814828942720004ED7AB /* CardCollectionViewCell.swift in Sources */,
+				E4C6D0C028AC079200041786 /* CardDetailsController.swift in Sources */,
 				E654D1F028A7D2D4001CA087 /* Set.swift in Sources */,
 				E4CB3CBB288D996E00DB4164 /* CardDetailsModel.swift in Sources */,
 				E654D1F428A7D2D4001CA087 /* SetsResponse.swift in Sources */,
@@ -666,7 +676,6 @@
 				E654D1F828A7D2D4001CA087 /* SetSearchParameter.swift in Sources */,
 				E4CB3CC5288D9AEC00DB4164 /* ExpansionListView.swift in Sources */,
 				E4CB3C6F288B46A800DB4164 /* SceneDelegate.swift in Sources */,
-				E4CB3CC9288D9B7C00DB4164 /* ExpansionCardsViewModel.swift in Sources */,
 				E6B9968028AAF02E0004EB96 /* FirstLetterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

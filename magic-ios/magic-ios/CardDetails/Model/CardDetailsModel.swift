@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+extension Card {
+    var isFavorite: Bool { CoreDataStack.coreDataStack?.checkCardInFavorites(self) ?? false }
+}

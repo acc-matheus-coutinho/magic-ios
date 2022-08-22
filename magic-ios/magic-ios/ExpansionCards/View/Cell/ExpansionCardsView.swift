@@ -14,7 +14,7 @@ class ExpansionCardViewCell: UICollectionViewCell {
     
     private let cardImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "menucard.fill")
+        image.image = UIImage(named: "magicCardBack")
         image.tintColor = .white
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
@@ -43,7 +43,7 @@ class ExpansionCardViewCell: UICollectionViewCell {
         loadingView.startAnimating()
 
         if let urlString = card.imageUrl?.replacingOccurrences(of: "http://", with: "https://") {
-            let placeHolder = UIImage(systemName: "menucard.fill")
+            let placeHolder = UIImage(named: "magicCardBack")
             cardImage.kf.setImage(with: URL(string: urlString), placeholder: placeHolder, options: .none) { _ in
                 self.loadingView.stopAnimating()
                 self.cardImage.isHidden = false
